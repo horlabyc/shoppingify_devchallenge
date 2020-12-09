@@ -1,0 +1,38 @@
+.loginWrapper {
+  height: 100vh;
+  background-color: #f5f7fb;
+  .loginWrapper__body {
+    background-color:#fff;
+    min-width: 300px;
+    margin: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,.1607843137254902);
+    border-radius: 5px;
+    @media (min-width:500px) {
+      min-width: 500px;
+    }
+  }
+  .loginWrapper__title {
+    p {
+      font-size: 24px;
+      color: rgb(63, 61, 86);
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+  .loginWrapper__content {
+    .inputError {
+      color: #ec5990;
+      text-align: left;
+    }
+    .form__submit {
+      margin-top: 2.5rem;
+    }
+    .text__register {
+      color: #0bafe4;
+      cursor: pointer;
+    }
+  }
+}

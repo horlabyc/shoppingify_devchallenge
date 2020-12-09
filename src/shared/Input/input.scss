@@ -1,0 +1,22 @@
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #F9A109;
+  padding: 17px 15px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  outline: none;
+}
+label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  color: rgb(52, 51, 58);
+  font-size: 14px;
+  font-weight: bold;
+}

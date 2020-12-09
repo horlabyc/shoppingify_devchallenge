@@ -1,0 +1,28 @@
+.button {
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  -webkit-appearance: none;
+  outline: none;
+  max-width: 200px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  &.button__primary {
+    background: #56CCF2;
+    &:hover {
+      background: #1493bd;
+    }
+  }
+  &.button__secondary {
+    background:#F9A109;
+    &:hover {
+      background:#af720a;
+    }
+  }
+}
