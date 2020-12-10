@@ -1,23 +1,24 @@
 import React, { useRef, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Input from "../../../shared/Input/input";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../../../shared/button/button";
 import './register.scss';
 import { POST } from "../../../services/http";
-import { useFetchPOST } from "../../../hooks/usefetch";
+import { useToasts } from "react-toast-notifications";
 export interface RegisterPageProps {
   
 }
  
 const RegisterPage: React.FunctionComponent<RegisterPageProps> = () => {
+  const history = useHistory();
   const { register, handleSubmit, watch, errors} = useForm();
   const password = useRef({});
   const [buttonState, setButtonState] = useState<'idle' | 'loading'>('idle');
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+  const { addToast } = useToasts();
   password.current = watch('password');
   const onSubmit = (data: any) => {
-    console.log(data);
     setButtonState('loading');
     setButtonDisabled(true);
     const payload = {
@@ -26,15 +27,24 @@ const RegisterPage: React.FunctionComponent<RegisterPageProps> = () => {
       password: data.password
     }
     POST('https://shoply.herokuapp.com/auth/register', payload).then((res) => {
+      addToast("Cool! Your account has been created!", {
+        appearance: "success",
+        autoDismiss: true
+      });
       setButtonState('idle');
       setButtonDisabled(false);
+      history.push('/auth/login');
     }).catch((error) => {
       setButtonState('idle');
       setButtonDisabled(false);
+      console.log(error.response.data);
+      addToast(error.response.data.message, {
+        appearance: "error",
+        autoDismiss: true
+      });
     })
   };
 
-  
   return (  
     <div className="registerWrapper flex align-center justify-center">
       <div className="registerWrapper__body">

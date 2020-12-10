@@ -2,12 +2,15 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
+import { ToastProvider } from 'react-toast-notifications';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes></Routes>
-    </BrowserRouter>
+    <ToastProvider autoDismiss placement="bottom-center">
+      <BrowserRouter>
+        <Routes></Routes>
+      </BrowserRouter>
+    </ToastProvider>
   );
 }
 
