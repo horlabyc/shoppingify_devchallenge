@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
 import Input from "../../../shared/Input/input";
-import { Link, Route } from "react-router-dom";
-import './login.scss';
+import { Link } from "react-router-dom";
 import Button from "../../../shared/button/button";
+import './login.scss';
 
 export interface LoginPageProps {
   
@@ -54,7 +54,7 @@ const LoginPage: React.FunctionComponent<LoginPageProps> = () => {
               <p>You don't have an account ? <span className="text__register">Register</span></p>
             </Link>
             <div className="form__submit flex justify-center align-center">
-              <Button type="submit" variant="primary" action="Login"/>
+              <Button type="submit" variant="secondary" action="Login"/>
             </div>
           </form>
         </section>
