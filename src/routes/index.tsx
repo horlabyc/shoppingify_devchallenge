@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import { AppContext } from '../contexts/appContext';
-import { useAuth } from '../hooks/useAuth';
 import LoginPage from '../pages/auth/login/login';
 import RegisterPage from '../pages/auth/register/register';
 import HistoryPage from '../pages/history/history';
 import HomePage from '../pages/home/home';
 import { PrivateRoute } from './protectedRoute';
+import { RestrictedRoute } from './restrictedRoute';
 
 const Routes = () => {
   const { state } = useContext(AppContext);
@@ -14,8 +14,8 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/auth/login" exact component={LoginPage}></Route>
-        <Route path="/auth/register" exact component={RegisterPage}></Route>
+        <RestrictedRoute isLoggedIn={state.authenticated} path="/auth/login" exact component={LoginPage}></RestrictedRoute>
+        <RestrictedRoute isLoggedIn={state.authenticated} path="/auth/register" exact component={RegisterPage}></RestrictedRoute>
         <PrivateRoute isLoggedIn={state.authenticated} path="/history" exact component={HistoryPage}></PrivateRoute>
         <PrivateRoute isLoggedIn={state.authenticated} path="/home" exact component={HomePage}></PrivateRoute>
         <Redirect from="/" to="/home"></Redirect>
