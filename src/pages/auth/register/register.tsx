@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Input from "../../../shared/Input/input";
 import { Link, useHistory } from "react-router-dom";
-import Button from "../../../shared/button/button";
+import Button from "../../../shared/Button/button";
 import './register.scss';
 import { POST } from "../../../services/http";
 import { useToasts } from "react-toast-notifications";

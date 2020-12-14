@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Loader from '../loader/loader';
-import {Btn} from '../style/style';
+import Loader from '../Loader/loader';
+import {Btn} from '../Styled Components/style';
 import './button.scss';
 
 export interface ButtonProps {

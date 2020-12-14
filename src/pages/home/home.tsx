@@ -1,4 +1,5 @@
 import React from "react";
+import MainLayout from "../../shared/MainLayout/mainLayout";
 
 export interface HomePageProps {
   
@@ -6,7 +7,7 @@ export interface HomePageProps {
  
 const HomePage: React.FunctionComponent<HomePageProps> = () => {
   return (  
-    <h1>Home works</h1>
+    <MainLayout />
   );
 }
  
