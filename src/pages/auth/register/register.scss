@@ -7,7 +7,7 @@
     margin: auto;
     height: auto;
     border-radius: 10px;
-    padding: 1rem 2rem;
+    padding: 3rem 3rem;
     box-shadow: 0 3px 6px rgba(0,0,0,.1607843137254902);
     border-radius: 5px;
     @media (min-width:500px) {
@@ -34,6 +34,7 @@
     }
     .form__submit {
       margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
     }
     .text__login {
       color: #0bafe4;

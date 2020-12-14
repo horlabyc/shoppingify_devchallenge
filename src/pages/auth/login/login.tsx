@@ -1,12 +1,12 @@
-import React, { PropsWithChildren, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Input from "../../../shared/Input/input";
 import { Link, useHistory } from "react-router-dom";
 import Button from "../../../shared/button/button";
 import './login.scss';
+import logo from '../../../logo.svg';
 import { useToasts } from "react-toast-notifications";
 import { POST } from "../../../services/http";
-import { useAuth } from "../../../hooks/useAuth";
 import { AppContext } from "../../../contexts/appContext";
 
 export interface LoginPageProps {
@@ -57,8 +57,9 @@ const LoginPage: React.FunctionComponent = (props: any) => {
   return (  
     <div className="loginWrapper flex align-center justify-center">
       <div className="loginWrapper__body">
-        <section className="loginWrapper__title">
-          <p>Login</p>
+        <section className="loginWrapper__title flex align-center">
+          <img src={logo} alt="logo"></img>
+          <span style={{ fontWeight: 'bold'}}>Shoppingify</span>
         </section>
         <section className="loginWrapper__content">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -89,9 +90,7 @@ const LoginPage: React.FunctionComponent = (props: any) => {
               })}
             />
             { errors['password'] && <p className="inputError">{ errors['password'].message }</p>}
-            <Link to="/auth/register">
-              <p>You don't have an account ? <span className="text__register">Register</span></p>
-            </Link>
+            
             <div className="form__submit flex justify-center align-center">
               <Button 
                 type="submit" 
@@ -100,6 +99,9 @@ const LoginPage: React.FunctionComponent = (props: any) => {
                 state={buttonState}
                 action="Login"/>
             </div>
+            <Link to="/auth/register">
+              <p>You don't have an account ? <span className="text__register">Register</span></p>
+            </Link>
           </form>
         </section>
       </div>

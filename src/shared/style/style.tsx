@@ -4,8 +4,9 @@ export const Btn = styled.button`
   color: white;
   text-transform: uppercase;
   border: none;
-  border-radius: 12px;
-  padding: 20px;
+  width: 100%;
+  border-radius: 3px;
+  padding: 1rem;
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
