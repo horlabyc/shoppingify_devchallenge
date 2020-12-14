@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export const POST = (url: string, payload: any) => {
-  return axios.post(`${url}`, payload);
+const baseurl = 'https://shoply.herokuapp.com/'
+export const POST = (endpoint: string, payload: any) => {
+  return axios.post(`${baseurl}${endpoint}`, payload);
 };
 
-export const GET = (url: string, payload: any) => {
-  return axios.get(`${url}`);
+export const GET = (endpoint: string, payload?: any) => {
+  return axios.get(`${baseurl}${endpoint}`);
 };

@@ -26,7 +26,7 @@ const RegisterPage: React.FunctionComponent<RegisterPageProps> = () => {
       username: data.username,
       password: data.password
     }
-    POST('https://shoply.herokuapp.com/auth/register', payload).then((res) => {
+    POST('auth/register', payload).then((res) => {
       addToast("Cool! Your account has been created!", {
         appearance: "success",
         autoDismiss: true
@@ -37,7 +37,6 @@ const RegisterPage: React.FunctionComponent<RegisterPageProps> = () => {
     }).catch((error) => {
       setButtonState('idle');
       setButtonDisabled(false);
-      console.log(error.response.data);
       addToast(error.response.data.message, {
         appearance: "error",
         autoDismiss: true
