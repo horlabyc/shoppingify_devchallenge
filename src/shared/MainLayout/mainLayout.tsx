@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import SideMenu from '../SideMenu/sideMenu';
 import menuIcon from '../../assets/images/list.svg';
 import shopping_cart from '../../assets/images/shopping-cart.svg';
+import chart from '../../assets/images/chart.svg';
+import refresh from '../../assets/images/refresh.svg';
 
 export interface MainLayoutProps {
   
@@ -46,12 +48,12 @@ const MainLayout: React.FunctionComponent<MainLayoutProps> = () => {
           iconAlt="menulist"
         />
         <SideMenu.SideMenuIcon 
-          icon={menuIcon} 
+          icon={refresh} 
           link={'/history'}
           iconAlt="menulist"
         />
         <SideMenu.SideMenuIcon 
-          icon={menuIcon} 
+          icon={chart} 
           link={'/history'}
           iconAlt="menulist"
         />
