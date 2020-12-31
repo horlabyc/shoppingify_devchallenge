@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from './Header/header';
 import './mainContent.component.scss';
-import ShoppingList from './ShoppingList/shoppingList';
+import Items from './Items/items';
 
 export interface MainContentProps {
   
@@ -23,7 +23,7 @@ const MainContent: React.FunctionComponent<MainContentProps> = () => {
     <Container>
       <Header></Header>
       {
-        categories.map(category => <ShoppingList categoryName={category}></ShoppingList>)
+        categories.map((category, index) => <Items categoryName={category} key={`${category} ${index}`}></Items>)
       }
     </Container>
   );

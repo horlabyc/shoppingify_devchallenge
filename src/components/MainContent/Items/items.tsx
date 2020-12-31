@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ShoppingItem from '../ShoppingItem/shoppingItem';
-import './shoppingList.scss';
+import './items.scss';
 
-export interface ShoppingListProps {
+export interface ItemsProps {
   categoryName: String
 }
  
-const ShoppingList: React.FunctionComponent<ShoppingListProps> = ({ categoryName }) => {
+const Items: React.FunctionComponent<ItemsProps> = ({ categoryName }) => {
   const items = [
     {
       name: 'Avocado'
@@ -25,10 +25,10 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = ({ categoryName
     <div className="container">
       <p className="items__categoryName">{categoryName}</p>
       <div className="items">
-        { items.map((item: any) => <ShoppingItem name={item.name}></ShoppingItem>)}
+        { items.map((item: any, index) => <ShoppingItem name={item.name} key={`${item.name} ${index}`}></ShoppingItem>)}
       </div>
     </div>
   )
 }
  
-export default ShoppingList;
+export default Items;

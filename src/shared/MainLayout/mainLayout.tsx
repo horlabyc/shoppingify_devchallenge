@@ -6,6 +6,7 @@ import shopping_cart from '../../assets/images/shopping-cart.svg';
 import chart from '../../assets/images/chart.svg';
 import refresh from '../../assets/images/refresh.svg';
 import MainContent from '../../components/MainContent/mainContent.component';
+import RightSideMenu from '../RightSideMenu/rightSideMenu';
 
 export interface MainLayoutProps {
   
@@ -64,6 +65,7 @@ const MainLayout: React.FunctionComponent<MainLayoutProps> = () => {
         </NavigationMenu.NavigationMenuIcon>
       </NavigationMenu>
       <MainContent></MainContent>
+      <RightSideMenu></RightSideMenu>
     </LayoutContainer>
   );
 }

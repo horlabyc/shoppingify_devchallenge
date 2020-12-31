@@ -10,7 +10,6 @@ import { RestrictedRoute } from './restrictedRoute';
 
 const Routes = () => {
   const { state } = useContext(AppContext);
-  console.log({app: state.authenticated})
   return (
     <BrowserRouter>
       <Switch>

@@ -9,13 +9,14 @@ type Props = {
 
 const intialState: appState = {
   authenticated: false,
+  rightSideMenuType: 'shoppingList'
 }
 
 export const AppContext = createContext<{state: appState, dispatch: React.Dispatch<any>}>({ state: intialState, dispatch: () => null});
 
-const AuthContextProvider = (props: Props) => {
+const AppContextProvider = (props: Props) => {
   const user = getLoggedinUser(); 
-  const [ state, dispatch] = useReducer(AppReducer, {authenticated: !!user});
+  const [ state, dispatch] = useReducer(AppReducer, {authenticated: !!user, rightSideMenuType: 'shoppingList'});
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {props.children}
@@ -23,4 +24,4 @@ const AuthContextProvider = (props: Props) => {
   )
 }
 
-export default AuthContextProvider;
+export default AppContextProvider;

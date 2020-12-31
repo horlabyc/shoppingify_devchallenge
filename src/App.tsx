@@ -3,17 +3,17 @@ import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import { ToastProvider } from 'react-toast-notifications';
-import AuthContextProvider from './contexts/appContext';
+import AppContextProvider from './contexts/appContext';
 
 function App() {
   return (
-    <AuthContextProvider>
+    <AppContextProvider>
       <ToastProvider autoDismiss placement="top-center">
         <BrowserRouter>
           <Routes></Routes>
         </BrowserRouter>
       </ToastProvider>
-    </AuthContextProvider>
+    </AppContextProvider>
   );
 }
 
