@@ -32,6 +32,11 @@ const Aside = styled.aside`
   border-bottom-left-radius: 14px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+  position: fixed;
+  width: 100px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 `
 
 const Header = styled.section`

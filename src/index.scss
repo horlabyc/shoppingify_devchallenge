@@ -45,3 +45,28 @@ a {
 .relative {
   position: relative;
 }
+
+.text-primary {
+  color: #F9A109;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.searchBox {
+  border: none !important;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+.text-gray-light {
+  color: #c1c1c4;
+}
+
+.transition-colors {
+  transition-property: background-color,border-color,color,fill,stroke;
+}
+
+.duration-300 {
+  transition-duration: .3s;
+}

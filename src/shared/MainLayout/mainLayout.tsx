@@ -5,19 +5,15 @@ import menuIcon from '../../assets/images/list.svg';
 import shopping_cart from '../../assets/images/shopping-cart.svg';
 import chart from '../../assets/images/chart.svg';
 import refresh from '../../assets/images/refresh.svg';
+import MainContent from '../../components/MainContent/mainContent.component';
 
 export interface MainLayoutProps {
   
 }
 
 const LayoutContainer = styled.main`
-  display: grid;
-  grid-template-columns: 100px 2fr 1fr;
-  grid-template-rows: 55px calc(100vh - 55px);
-  grid-template-areas:
-    "sideMenu content"
-    "sideMenu content";
-  height: 100vh;
+  display: flex;
+  min-height: 100vh;
   background: #FAFAFE;
 `
 
@@ -67,7 +63,7 @@ const MainLayout: React.FunctionComponent<MainLayoutProps> = () => {
           <CartCount className="cart_count">2</CartCount>
         </NavigationMenu.NavigationMenuIcon>
       </NavigationMenu>
-      
+      <MainContent></MainContent>
     </LayoutContainer>
   );
 }

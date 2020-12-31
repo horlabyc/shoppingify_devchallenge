@@ -10,7 +10,7 @@ type RefReturn =
 
 export interface IInputProps {
   name: string;
-  label: string;
+  label?: string;
   className?: string;
   defaultValue?: any;
   inputRef: any,
@@ -21,7 +21,7 @@ export interface IInputProps {
 const Input: React.FunctionComponent<IInputProps> = ({ label, name, placeholder, className, defaultValue, inputRef, type}) => {
   return (  
     <>
-      <label>{label}</label>
+      { label ? <label>{label}</label> : null }
       <input 
         className={`${ className ? className : ''}`}
         name={name} 
