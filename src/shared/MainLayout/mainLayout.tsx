@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../SideMenu/sideMenu';
+import NavigationMenu from '../NavigationMenu/navigationMenu';
 import menuIcon from '../../assets/images/list.svg';
 import shopping_cart from '../../assets/images/shopping-cart.svg';
 import chart from '../../assets/images/chart.svg';
@@ -12,7 +12,7 @@ export interface MainLayoutProps {
 
 const LayoutContainer = styled.main`
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 100px 2fr 1fr;
   grid-template-rows: 55px calc(100vh - 55px);
   grid-template-areas:
     "sideMenu content"
@@ -39,34 +39,35 @@ const CartCount = styled.span`
 const MainLayout: React.FunctionComponent<MainLayoutProps> = () => {
   return (  
     <LayoutContainer>
-      <SideMenu>
-        <SideMenu.SideMenuHeader></SideMenu.SideMenuHeader>
-        <SideMenu.SideMenuIconList>
-        <SideMenu.SideMenuIcon 
+      <NavigationMenu>
+        <NavigationMenu.NavigationMenuHeader></NavigationMenu.NavigationMenuHeader>
+        <NavigationMenu.NavigationMenuIconList>
+        <NavigationMenu.NavigationMenuIcon 
           icon={menuIcon} 
           link={'/history'}
           iconAlt="menulist"
         />
-        <SideMenu.SideMenuIcon 
+        <NavigationMenu.NavigationMenuIcon 
           icon={refresh} 
           link={'/history'}
           iconAlt="menulist"
         />
-        <SideMenu.SideMenuIcon 
+        <NavigationMenu.NavigationMenuIcon 
           icon={chart} 
           link={'/history'}
           iconAlt="menulist"
         />
-        </SideMenu.SideMenuIconList>
-        <SideMenu.SideMenuIcon 
+        </NavigationMenu.NavigationMenuIconList>
+        <NavigationMenu.NavigationMenuIcon 
           icon={shopping_cart}
           iconAlt="menulist"
           className="align-end relative"
           imgClassName="icon_full_rounded"
         >
           <CartCount className="cart_count">2</CartCount>
-        </SideMenu.SideMenuIcon>
-      </SideMenu>
+        </NavigationMenu.NavigationMenuIcon>
+      </NavigationMenu>
+      
     </LayoutContainer>
   );
 }

@@ -3,14 +3,14 @@ import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../logo.svg';
-import './sideMenu.scss';
+import './navigationMenu.scss';
 
-export interface SideMenuProps {
+export interface NavigationMenuProps {
   children: ReactNode;
   className?: string;
 }
 
-type SideMenuItemProps = {
+type NavigationMenuItemProps = {
   link?: string;
   icon: string;
   iconAlt: string;
@@ -20,7 +20,7 @@ type SideMenuItemProps = {
   children?: ReactNode
 }
 
-type SideMenuItemListProps = {
+type NavigationMenuItemListProps = {
   children: ReactNode,
   className?: string
 }
@@ -42,7 +42,7 @@ const Header = styled.section`
   align-items: flex-start;
 `
  
-const SideMenu = (props: SideMenuProps) => {
+const NavigationMenu = (props: NavigationMenuProps) => {
   return (  
     <Aside className={`${props.className || ''}`}>
       {props.children}
@@ -50,7 +50,7 @@ const SideMenu = (props: SideMenuProps) => {
   );
 }
 
-const SideMenuHeader = () => {
+const NavigationMenuHeader = () => {
   return (
     <Header>
       <img src={logo} alt="logo" className="sideMenu_logo"/>
@@ -58,7 +58,7 @@ const SideMenuHeader = () => {
   )
 }
 
-const SideMenuIconList = (props: SideMenuItemListProps) => {
+const NavigationMenuIconList = (props: NavigationMenuItemListProps) => {
   return (
     <ul className={`sideMenu__item_list ${props.className || ''}`}>
       {props.children}
@@ -66,7 +66,7 @@ const SideMenuIconList = (props: SideMenuItemListProps) => {
   )
 }
 
-const SideMenuIcon = (props: SideMenuItemProps) => {
+const NavigationMenuIcon = (props: NavigationMenuItemProps) => {
   return (
     <li className={`sideMenu__item ${props.className || ''}`} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 3rem 0'}}>
       {props.children}
@@ -80,8 +80,8 @@ const SideMenuIcon = (props: SideMenuItemProps) => {
   )
 }
 
-SideMenu.SideMenuHeader = SideMenuHeader;
-SideMenu.SideMenuIconList = SideMenuIconList;
-SideMenu.SideMenuIcon = SideMenuIcon;
+NavigationMenu.NavigationMenuHeader = NavigationMenuHeader;
+NavigationMenu.NavigationMenuIconList = NavigationMenuIconList;
+NavigationMenu.NavigationMenuIcon = NavigationMenuIcon;
 
-export default SideMenu;
+export default NavigationMenu;
