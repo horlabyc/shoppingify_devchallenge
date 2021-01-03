@@ -6,5 +6,6 @@ export interface IItem {
   name: string;
   category: string;
   description: string;
-  user: string
+  user: string,
+  image?: string
 }

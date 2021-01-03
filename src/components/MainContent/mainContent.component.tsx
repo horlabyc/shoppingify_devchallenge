@@ -18,6 +18,7 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   margin-left: 100px;
+  flex: 0.7;
 `
  
 const MainContent: React.FunctionComponent<MainContentProps> = () => {
@@ -30,8 +31,8 @@ const MainContent: React.FunctionComponent<MainContentProps> = () => {
     setLoading(true);
     GET('items').then((res) => {
       dispatch(setItems(res.data.data.items))
+      setLoading(false);
     });
-    setLoading(false);
   }, [dispatch]);
   return (  
     <Container>

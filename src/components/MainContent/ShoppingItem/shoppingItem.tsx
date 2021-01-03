@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import plus from '../../../assets/images/plus.svg';
 import { AppContext } from '../../../contexts/appContext';
+import { setActiveItem } from '../../../features/itemSlice';
+import { IItem } from '../../../models/items';
 
 
 export interface ShoppingItemProps {
-  name: String
+  item: IItem
 }
 
 const Item = styled.div`
@@ -19,16 +22,18 @@ const Item = styled.div`
 
 `
  
-const ShoppingItem: React.FunctionComponent<ShoppingItemProps> = ({ name }) => {
-  const { state, dispatch } = useContext(AppContext);
+const ShoppingItem: React.FunctionComponent<ShoppingItemProps> = ({item}) => {
+  const { dispatch: emit } = useContext(AppContext);
+  const dispatch = useDispatch();
 
   const viewItemDetails = () => {
-    dispatch({type: 'SET_RIGHT_SIDE_MENU_TYPE', payload: 'itemDetails'})
+    emit({type: 'SET_RIGHT_SIDE_MENU_TYPE', payload: 'itemDetails'});
+    dispatch(setActiveItem(item))
   }
   
   return (  
     <Item onClick={() => viewItemDetails()}>
-      <p style={{ fontSize: "0.9rem", cursor:'pointer'}}>{name}</p>
+      <p style={{ fontSize: "0.9rem", cursor:'pointer'}}>{item.name}</p>
       <img src={plus} alt="add" style={{ cursor: "pointer"}}/>
     </Item>
   );

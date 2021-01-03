@@ -5,15 +5,16 @@ import './button.scss';
 
 export interface ButtonProps {
   variant?: 'primary' | 'secondary';
-  type: string;
+  type?: string;
   state?: 'idle' | 'loading';
   action: string;
   disabled?: boolean;
+  className?: string
 }
  
-const Button: React.FunctionComponent<ButtonProps> = ({ action, variant, state, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ action, variant, state, disabled, className }) => {
   return (  
-    <Btn className={`${variant ? 'button__' + variant : 'button__primary'} ${disabled ? 'disabled' : ''}`}>
+    <Btn className={`${variant ? 'button__' + variant : 'button__primary'} ${disabled ? 'disabled' : ''} ${className ? className : ''}`}>
       {state === 'loading' ? <Loader /> : action}
     </Btn>
   );

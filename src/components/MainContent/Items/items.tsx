@@ -16,7 +16,7 @@ const Items: React.FunctionComponent<ItemsProps> = ({ items }) => {
     <div className="items__container">
       <p className="items__categoryName">{titleCase(items.category)}</p>
       <div className="items">
-        { items.items.map(({name, _id}) => <ShoppingItem name={name} key={`${_id}`}></ShoppingItem>)}
+        { items.items.map((item) => <ShoppingItem item={item} key={`${item._id}`}></ShoppingItem>)}
       </div>
     </div>
   )
