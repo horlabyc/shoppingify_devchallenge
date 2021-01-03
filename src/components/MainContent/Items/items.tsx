@@ -1,5 +1,6 @@
 import React from 'react';
 import { IItem } from '../../../models/items';
+import { titleCase } from '../../../utility';
 import ShoppingItem from '../ShoppingItem/shoppingItem';
 import './items.scss';
 
@@ -12,10 +13,10 @@ export interface ItemsProps {
  
 const Items: React.FunctionComponent<ItemsProps> = ({ items }) => {
   return (
-    <div className="container">
-      <p className="items__categoryName">{items.category}</p>
+    <div className="items__container">
+      <p className="items__categoryName">{titleCase(items.category)}</p>
       <div className="items">
-        { items.items.map((item) => <ShoppingItem name={item.name} key={`${item._id}`}></ShoppingItem>)}
+        { items.items.map(({name, _id}) => <ShoppingItem name={name} key={`${_id}`}></ShoppingItem>)}
       </div>
     </div>
   )
