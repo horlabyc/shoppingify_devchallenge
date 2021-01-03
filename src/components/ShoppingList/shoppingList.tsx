@@ -11,8 +11,6 @@ export interface ShoppingListProps {
 
 const Container = styled.section`
   display: grid;
-  /* grid-gap: 1.5rem; */
-  /* height: 100%; */
 `
 
 const Header = styled.div`

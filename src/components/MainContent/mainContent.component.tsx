@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Header from './Header/header';
 import './mainContent.component.scss';
 import Items from './Items/items';
+import { GET } from '../../services/http';
+import { IItem } from '../../models/items';
 
 export interface MainContentProps {
   
@@ -16,14 +18,19 @@ const Container = styled.main`
 `
  
 const MainContent: React.FunctionComponent<MainContentProps> = () => {
-  const categories = [
-    'Fruis and Vegetable', 'Grains', 'Drinks', 'Foodstuff'
-  ]
+  let items = useRef([]);
+
+  useEffect(() => {
+    GET('items').then((res) => {
+      items.current = res.data.data.items;
+    });
+  }, []);
+
   return (  
     <Container>
       <Header></Header>
       {
-        categories.map((category, index) => <Items categoryName={category} key={`${category} ${index}`}></Items>)
+        items.current.map((item, index) => <Items items={item} key={`${index}`}></Items>)
       }
     </Container>
   );

@@ -8,9 +8,8 @@ export interface RightSideMenuProps {
 }
 
 const Container = styled.aside`
-  /* background-color: #fff; */
   height: 100vh;
-  width: 40%;
+  width: 25%;
 `
  
 const RightSideMenu: React.FunctionComponent<RightSideMenuProps> = () => {
