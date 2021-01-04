@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Header from './Header/header';
 import './mainContent.component.scss';
 import Items from './Items/items';
-import { GET } from '../../services/http';
-import { IItem } from '../../models/items';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectItems, setItems } from '../../features/itemSlice';
+import { fetchItems, ItemsSelector } from '../../features/itemSlice';
 import Spinner from '../Spinner/spinner';
 
 export interface MainContentProps {
@@ -23,23 +21,19 @@ const Container = styled.main`
  
 const MainContent: React.FunctionComponent<MainContentProps> = () => {
   
-  const items = useSelector(selectItems);
+  const { items, loading, hasErrors } = useSelector(ItemsSelector);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    GET('items').then((res) => {
-      dispatch(setItems(res.data.data.items))
-      setLoading(false);
-    });
+    dispatch(fetchItems());
   }, [dispatch]);
   return (  
     <Container>
       <Header></Header>
       <div className="body" style={{ marginTop:'3rem'}}>
       {
-        loading ? <Spinner></Spinner> :
+        loading ? <Spinner></Spinner> : 
+        hasErrors ? <h4> Error fetching data !!!</h4> :
         items.map((item: any, index: number) => <Items items={item} key={`${index}`}></Items>)
       }
       </div>

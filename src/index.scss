@@ -70,3 +70,11 @@ a {
 .duration-300 {
   transition-duration: .3s;
 }
+
+.inputError {
+  color: #ec5990;
+  text-align: left;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}

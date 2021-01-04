@@ -7,6 +7,7 @@ import ItemDescription from '../../components/ItemDescription/itemDescription';
 import './rightSideMenu.scss';
 import { useSelector } from 'react-redux';
 import { selectItem } from '../../features/itemSlice';
+import AddNewItem from '../../components/AddNewItem/addNewItem';
 export interface RightSideMenuProps {
   
 }
@@ -34,8 +35,9 @@ const RightSideMenu: React.FunctionComponent<RightSideMenuProps> = () => {
     return (  
       <Container style={{ backgroundColor:'#fff'}}>
         <div className="rightMenu__header">
-          <img src={arrowleft} alt="Go back" onClick={showShoppingList}/>
+          <p style={{fontWeight: 'bold'}}>Add a new item</p>
         </div>
+        <AddNewItem />
       </Container>
     )
   } else {

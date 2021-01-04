@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IItem } from '../../models/items';
 import Button from '../../shared/Button/button';
 import { titleCase } from '../../utility';
@@ -9,8 +9,9 @@ export interface ItemDescriptionProps {
 }
  
 const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({item}) => {
-  console.log({item})
-  const defaultImage = 'https://cdn.pixabay.com/photo/2018/03/09/08/04/avocado-3210885_1280.jpg'
+  const defaultImage = 'https://cdn.pixabay.com/photo/2018/03/09/08/04/avocado-3210885_1280.jpg';
+  const [buttonState, setButtonState] = useState<'idle' | 'loading'>('idle');
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   return (  
     <div className="itemDescription">
       <div className="itemDescription__image">
@@ -21,16 +22,16 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({item}) 
         <p className="itemDescription__name">{item.name}</p>
       </div>
       <div className="itemDescription__section">
-        <h5 className="itemDescription__title">name</h5>
+        <h5 className="itemDescription__title">category</h5>
         <p className="itemDescription__category">{titleCase(item.category)}</p>
       </div>
       <div className="itemDescription__section">
-        <h5 className="itemDescription__title">name</h5>
+        <h5 className="itemDescription__title">note</h5>
         <p className="itemDescription__description">{item.description}</p>
       </div>
       <div className="itemDescription__actions">
         <p>delete</p>
-        <Button type="" action="Add to list" variant="secondary" className="itemDescription__actions__add"></Button>
+        <Button type="" action="Add to list" variant="secondary" className="itemDescription__actions__add" state={buttonState} disabled={buttonDisabled}></Button>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import './shoppingList.scss';
 import source from '../../assets/images/source.svg';
 import edit from '../../assets/images/edit.svg';
 import ShoppingListItem from './ShoppingListItem/shoppingListItem';
+import { AppContext } from '../../contexts/appContext';
 
 export interface ShoppingListProps {
   
@@ -36,6 +37,11 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
     setCompleteOrCancelList(false);
   }
 
+  const { dispatch } = useContext(AppContext);
+  const showShoppingList = () => {
+    dispatch({type: 'SET_RIGHT_SIDE_MENU_TYPE', payload: 'addNewItem'});
+  }
+
   return (  
     <Container>
       <div className="header">
@@ -43,7 +49,7 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
           <img src={source} alt="bottle"/>
           <div className="header__text">
             <h4>Didn't find what you need?</h4>
-            <button className="additem">Add item</button>
+            <button className="additem" onClick={showShoppingList}>Add item</button>
           </div>
         </Header>
       </div>
