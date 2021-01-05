@@ -9,12 +9,13 @@ export interface ButtonProps {
   state?: 'idle' | 'loading';
   action: string;
   disabled?: boolean;
-  className?: string
+  className?: string;
+  handleClick?: () => void;
 }
  
-const Button: React.FunctionComponent<ButtonProps> = ({ action, variant, state, disabled, className }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ action, variant, state, disabled, className, handleClick }) => {
   return (  
-    <Btn className={`${variant ? 'button__' + variant : 'button__primary'} ${disabled ? 'disabled' : ''} ${className ? className : ''}`}>
+    <Btn className={`${variant ? 'button__' + variant : 'button__primary'} ${disabled ? 'disabled' : ''} ${className ? className : ''}`} onClick={handleClick}>
       {state === 'loading' ? <Loader /> : action}
     </Btn>
   );

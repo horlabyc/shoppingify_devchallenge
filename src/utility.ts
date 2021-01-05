@@ -1,3 +1,4 @@
 export const titleCase = (data: string) => {
-  return data.charAt(0).toUpperCase() + data.slice(1);
+  const dt = data.toLowerCase();
+  return dt.charAt(0).toUpperCase() + dt.slice(1);
 }

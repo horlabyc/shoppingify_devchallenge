@@ -8,3 +8,7 @@ export const POST = (endpoint: string, payload: any) => {
 export const GET = (endpoint: string, payload?: any) => {
   return axios.get(`${baseurl}${endpoint}`);
 };
+
+export const DELETE = (endpoint: string, payload?: any) => {
+  return axios.delete(`${baseurl}${endpoint}`);
+};

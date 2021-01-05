@@ -6,6 +6,7 @@ import { setCategories } from '../../features/categorySlice';
 import { fetchItems } from '../../features/itemSlice';
 import { GET, POST } from '../../services/http';
 import Button from '../../shared/Button/button';
+import ConfirmationDialog from '../../shared/ConfirmationDialog/confirmationDialog';
 import Input from '../../shared/Input/input';
 import Spinner from '../Spinner/spinner';
 import './addNewItem.scss';

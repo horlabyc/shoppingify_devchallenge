@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GET, POST } from '../services/http';
+import { GET } from '../services/http';
 
 export const ItemsSlice = createSlice({
   name: 'items',

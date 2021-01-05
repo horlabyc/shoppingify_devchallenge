@@ -1,0 +1,14 @@
+.modal {
+  bottom: 0;
+  right: 0;
+  background: rgba(87, 93, 119, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  overflow: auto;
+  padding: 5rem;
+  animation: fadeIn 0.2s ease-in both;
+  transition: 0.3s all;
+}

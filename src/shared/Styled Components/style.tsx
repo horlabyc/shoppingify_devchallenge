@@ -33,3 +33,26 @@ export const Btn = styled.button`
     }
   }
 `
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(87, 93, 119, 0.8);
+  animation: fadeIn 2s ease-in both;
+  transition: 0.3s all;
+`
+
+export const ModalBody = styled.div`
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 24px;
+  animation: fadeIn 2s ease-in both;
+  transition: 0.3s all;
+`
