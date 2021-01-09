@@ -17,7 +17,6 @@ const ConfirmationDialog: React.FunctionComponent<ConfirmationDialogProps> = ({ 
   el.setAttribute('id', 'confirmation-dialog');
   useEffect(() => {
     document.body.appendChild(el);
-
     return () => {
       document.body.removeChild(el);
     };
@@ -27,7 +26,7 @@ const ConfirmationDialog: React.FunctionComponent<ConfirmationDialogProps> = ({ 
       <Overlay>
         <ModalBody>
           <div>
-            <p>{message}</p>
+            <p style={{ fontSize: '24px', fontWeight: 500}}>{message}</p>
             <div className="actions">
               <p onClick={onCancel}>cancel</p>
               <Button type="" action="Yes" 

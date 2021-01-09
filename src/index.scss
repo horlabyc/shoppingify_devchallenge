@@ -78,3 +78,18 @@ a {
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
+
+.accordion__button {
+  font-weight: 500 !important;
+  font-size: 1.2rem !important;
+  outline: none;
+  font-weight: 500;
+  background-color: transparent !important;
+  color: #F9A109 !important;
+  display: flex;
+  align-items: center;
+  &::before {
+    height: 6px !important;
+    width: 6px !important;
+  }
+}
