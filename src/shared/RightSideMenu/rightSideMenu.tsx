@@ -27,13 +27,13 @@ const RightSideMenu: React.FunctionComponent<RightSideMenuProps> = () => {
   const activeItem = useSelector(selectItem);
   if(rightSideMenuType === 'shoppingList'){
     return (
-      <Container style={{ backgroundColor: '#FFF0DE'}}>
+      <Container style={{ backgroundColor: '#FFF0DE'}} className="rightMenu__container">
         <ShoppingList></ShoppingList>
       </Container>
     )
   } else if(rightSideMenuType === 'addNewItem') {
     return (  
-      <Container style={{ backgroundColor:'#fff'}}>
+      <Container style={{ backgroundColor:'#fff'}} className="rightMenu__container">
         <div className="rightMenu__header">
           <p style={{fontWeight: 'bold'}}>Add a new item</p>
         </div>
@@ -42,7 +42,7 @@ const RightSideMenu: React.FunctionComponent<RightSideMenuProps> = () => {
     )
   } else {
     return (
-      <Container style={{ backgroundColor: '#fff'}}>
+      <Container style={{ backgroundColor: '#fff'}} className="rightMenu__container">
         <div className="rightMenu__header">
           <img src={arrowleft} alt="Go back" onClick={showShoppingList}/>
           <span>go back</span>

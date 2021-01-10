@@ -13,7 +13,6 @@ export const ShoppingListSlice = createSlice({
       state.loading = true;
     },
     getListsSuccess: (state, {payload}) => {
-      console.log({payload})
       state.shoppingLists = payload;
       state.loading = false;
     },
@@ -29,7 +28,6 @@ export const fetchLists = () => {
     dispatch(getLists());
     try {
       const lists = await GET('shoppingList');
-      console.log(lists.data.data)
       dispatch(getListsSuccess(lists.data.data));
     } catch (error) {
       dispatch(getListsFailed())

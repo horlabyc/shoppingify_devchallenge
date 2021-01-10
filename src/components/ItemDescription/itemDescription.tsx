@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { AppContext } from '../../contexts/appContext';
 import { fetchItems } from '../../features/itemSlice';
 import { IItem } from '../../models/items';
-import { DELETE } from '../../services/http';
+import { DELETE, POST } from '../../services/http';
+import AddItemToListDialog from '../../shared/AddItemToListDialog/addItemToListDialog';
 import Button from '../../shared/Button/button';
 import ConfirmationDialog from '../../shared/ConfirmationDialog/confirmationDialog';
 import { titleCase } from '../../utility';
@@ -20,10 +21,11 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({item}) 
 
   const [dialogButtonState, setDialogButtonState] = useState<'idle' | 'loading'>('idle');
   const [dialogButtonDisabled, setDialogButtonDisabled] = useState<boolean>(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [confirmationModalIsOpen, setConfirmationModalIsOpen] = useState(false);
+  const [addItemToListModalIsOpen, setAddItemToListModalIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const openDIalog = () => {
-    setModalIsOpen(true);
+  const openConfirmationDIalog = () => {
+    setConfirmationModalIsOpen(true);
   }
   const { dispatch: dispatchContext } = useContext(AppContext);
   const showShoppingList = () => {
@@ -36,11 +38,23 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({item}) 
     DELETE(`items/${item._id}`).then(() => {
       setDialogButtonState('idle');
       setDialogButtonDisabled(false);
-      setModalIsOpen(false);
+      setConfirmationModalIsOpen(false);
       showShoppingList();
       dispatch(fetchItems());
     })
   }
+
+  const handleAddItem = (shoppingListId: string) => {
+    setAddItemToListModalIsOpen(false)
+    setButtonState('loading');
+    setButtonDisabled(true);
+    POST(`shoppingList/${shoppingListId}/addItem`, {itemId: item._id}).then(() => {
+      setButtonState('idle');
+      setButtonDisabled(false);
+      showShoppingList();
+    })
+  }
+
   return (  
     <div className="itemDescription">
       <div className="itemDescription__image">
@@ -59,18 +73,36 @@ const ItemDescription: React.FunctionComponent<ItemDescriptionProps> = ({item}) 
         <p className="itemDescription__description">{item.description}</p>
       </div>
       <div className="itemDescription__actions">
-        <p onClick={openDIalog}>delete</p>
-        <Button type="" action="Add to list" variant="secondary" className="itemDescription__actions__add" state={buttonState} disabled={buttonDisabled}></Button>
+        <p onClick={openConfirmationDIalog}>delete</p>
+        <Button 
+          type="" 
+          action="Add to list" 
+          variant="secondary" 
+          className="itemDescription__actions__add" 
+          state={buttonState} disabled={buttonDisabled}
+          handleClick={() => setAddItemToListModalIsOpen(true)}
+        >
+        </Button>
       </div>
       {
-        modalIsOpen && 
+        confirmationModalIsOpen && 
           <ConfirmationDialog 
             message="Are you sure you want to delete this item?"
-            onCancel={() => setModalIsOpen(false)}
+            onCancel={() => setConfirmationModalIsOpen(false)}
             onYes={handleDeleteItem}
             buttonDisabled = {dialogButtonDisabled}
             buttonState={dialogButtonState}
           ></ConfirmationDialog>
+      }
+      {
+        addItemToListModalIsOpen && 
+          <AddItemToListDialog 
+            message={`Add ${item.name} to shopping list`}
+            onCancel={() => setAddItemToListModalIsOpen(false)}
+            onAddItem={handleAddItem}
+            buttonDisabled = {dialogButtonDisabled}
+            buttonState={dialogButtonState}
+          ></AddItemToListDialog>
       }
     </div>
   );

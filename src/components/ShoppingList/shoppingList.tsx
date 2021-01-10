@@ -76,7 +76,14 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
                 {
                   shoppingList.items.length ?
                   shoppingList.items.map((item) => (
-                    <ShoppingListItem key={item._id}></ShoppingListItem>
+                    <ShoppingListItem key={item.category} item={item}></ShoppingListItem>
+                  )) :
+                  <p>No Item on this list</p>
+                }
+                {
+                  shoppingList.items.length ?
+                  shoppingList.items.map((item) => (
+                    <ShoppingListItem key={item.category} item={item}></ShoppingListItem>
                   )) :
                   <p>No Item on this list</p>
                 }

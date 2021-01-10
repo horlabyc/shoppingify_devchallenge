@@ -55,4 +55,5 @@ export const ModalBody = styled.div`
   border-radius: 24px;
   animation: fadeIn 2s ease-in both;
   transition: 0.3s all;
+  min-width: 500px;
 `

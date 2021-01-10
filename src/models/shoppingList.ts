@@ -7,5 +7,8 @@ export interface IShoppingList {
   _id: string,
   name: string,
   user: string,
-  items: IItem[]
+  items: {
+    category: string;
+    items: IItem[]
+  }[]
 }
