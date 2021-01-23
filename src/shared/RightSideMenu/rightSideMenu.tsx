@@ -13,7 +13,8 @@ export interface RightSideMenuProps {
 }
 
 const Container = styled.aside`
-  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
   flex: 0.4;
 `
  

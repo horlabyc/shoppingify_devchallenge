@@ -80,13 +80,6 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
                   )) :
                   <p>No Item on this list</p>
                 }
-                {
-                  shoppingList.items.length ?
-                  shoppingList.items.map((item) => (
-                    <ShoppingListItem key={item.category} item={item}></ShoppingListItem>
-                  )) :
-                  <p>No Item on this list</p>
-                }
               </AccordionItemPanel>
             </AccordionItem>
           ))
