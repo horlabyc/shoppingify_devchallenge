@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GET } from '../services/http';
+import { async } from 'rxjs';
+import { GET, PUT } from '../services/http';
 
 export const ShoppingListSlice = createSlice({
   name: 'shoppingList',
@@ -31,6 +32,17 @@ export const fetchLists = () => {
       dispatch(getListsSuccess(lists.data.data));
     } catch (error) {
       dispatch(getListsFailed())
+    }
+  }
+}
+
+export const updateItemQuantity = (shoppingListId: string, itemId: string, quantity: number) => {
+  return async(dispatch: any) => {
+    try {
+      await PUT(`shoppingList/${shoppingListId}/${itemId}/updateQuantity`, {quantity});
+      dispatch(fetchLists())
+    } catch (error) {
+      console.log(error);
     }
   }
 }

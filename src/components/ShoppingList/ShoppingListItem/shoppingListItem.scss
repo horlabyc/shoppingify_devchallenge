@@ -5,35 +5,4 @@
   .shopping-list-item__category{
     color: #828282;
   }
-  .shopping-list-item__item {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .item_name {
-      font-weight: 500;
-    }
-    .shopping-list-item__actions {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      justify-content: flex-end;
-      cursor: pointer;
-      img, p {
-        margin: 5px
-      }
-      .quantity {
-        border: 3px solid #F9A109;
-        border-radius: 24px;
-        padding: 0.2rem 0.5rem;
-        color: #F9A10A;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-      img {
-        height: 15px;
-        cursor: pointer;
-      }
-    }
-  }
 }

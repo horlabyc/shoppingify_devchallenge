@@ -1,36 +1,31 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { updateItemQuantity } from '../../../features/shoppingListSlice';
 import { IItem } from '../../../models/items';
 import { titleCase } from '../../../utility';
-import trash from '../../../assets/images/trash.svg';
-import minus from '../../../assets/images/minus.svg';
-import plus from '../../../assets/images/plus_orange.svg';
+import ShoppingItem from '../Shopping-Item/shopping-item';
 
 import './shoppingListItem.scss';
 
 export interface ShoppingListItemProps {
+  shoppingListId: string,
   item: {
     category: string,
     items: IItem[]
   }
 }
  
-const ShoppingListItem: React.FunctionComponent<ShoppingListItemProps> = ({item}) => {
+const ShoppingListItem: React.FunctionComponent<ShoppingListItemProps> = ({item, shoppingListId}) => {
+  const dispatch = useDispatch();
+  const updateQuantity = (qty: number, itemId: string) => {
+    dispatch(updateItemQuantity(shoppingListId,itemId, qty));
+  }
   return (  
     <div className="shopping-list-item">
       <h5 className="shopping-list-item__category">{titleCase(item.category)}</h5>
       {
         item.items.map((i) => (
-          <div className="shopping-list-item__item">
-            <div>
-              <p className="item-name">{i.name}</p>
-            </div>
-            <div className="shopping-list-item__actions">
-              <img src={trash} alt="delete" className="" loading="lazy"/>
-              <p className="quantity">{i.quantity} {i.unitMeasure}</p>
-              <img src={minus} alt="reduce" className="" loading="lazy"/>
-              <img src={plus} alt="add" className="" loading="lazy"/>
-            </div>
-          </div>
+          <ShoppingItem item={i} key={i._id} shoppingListId={shoppingListId} onQuantityUpdate={(quantity: number, itemId) => updateQuantity(quantity, itemId)}/>
         ))
       }
     </div>

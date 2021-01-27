@@ -75,8 +75,8 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
               <AccordionItemPanel>
                 {
                   shoppingList.items.length ?
-                  shoppingList.items.map((item) => (
-                    <ShoppingListItem key={item.category} item={item}></ShoppingListItem>
+                  shoppingList.items.map((item, index) => (
+                    <ShoppingListItem key={index} item={item} shoppingListId={shoppingList._id}></ShoppingListItem>
                   )) :
                   <p>No Item on this list</p>
                 }
