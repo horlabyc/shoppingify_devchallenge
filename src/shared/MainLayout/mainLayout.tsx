@@ -14,7 +14,7 @@ export interface MainLayoutProps {
 
 const LayoutContainer = styled.main`
   display: flex;
-  height: 97vh;
+  height: 100vh;
   background: #FAFAFE;
 `
 

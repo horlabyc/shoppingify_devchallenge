@@ -10,14 +10,17 @@ import { fetchLists, ShoppingListSelector} from '../../features/shoppingListSlic
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
 import { IShoppingList } from '../../models/shoppingList';
+import Button from '../../shared/Button/button';
+import CancelOrCompleteList from '../Cancel-or-complete-list/cancelOrCompleteList';
 export interface ShoppingListProps {
   
 }
 
 const Container = styled.section`
   display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-rows: auto 1fr;
   max-height: 100vh;
+  height: 100%;
 `
 
 const Header = styled.div`
@@ -80,29 +83,18 @@ const ShoppingList: React.FunctionComponent<ShoppingListProps> = () => {
                   )) :
                   <p>No Item on this list</p>
                 }
+                {
+                  shoppingList.items.length ?
+                  <section className="action_center">
+                    <CancelOrCompleteList shoppingListId={shoppingList._id}></CancelOrCompleteList>
+                  </section> : null
+                }
               </AccordionItemPanel>
             </AccordionItem>
           ))
         }
       </Accordion>
-      <section className="action_center">
-        {completeOrCancelList && <CancelOrCompleteList></CancelOrCompleteList>}
-        {editListName && <EditListName></EditListName>}
-      </section>
     </Container>
   );
 }
-
-const EditListName = () => {
-  return (
-    <h3>Edit list name</h3>
-  )
-}
-
-const CancelOrCompleteList = () => {
-  return (
-    <h3>Complete list</h3>
-  )
-}
- 
 export default ShoppingList;

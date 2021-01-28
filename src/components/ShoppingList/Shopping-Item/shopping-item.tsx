@@ -10,12 +10,12 @@ import { Subject } from 'rxjs';
 export interface ShoppingItemProps {
   item: IItem,
   shoppingListId: string,
-  onQuantityUpdate: (quantity: number, itemId: string) => void
+  onQuantityUpdate: (quantity: number, itemId: string) => void,
+  onDeleteItem: (itemid: string) => void
 }
  
-const ShoppingItem: React.SFC<ShoppingItemProps> = ({item, onQuantityUpdate}) => {
+const ShoppingItem: React.SFC<ShoppingItemProps> = ({item, onQuantityUpdate, onDeleteItem}) => {
   const [ quantity, setQuantity] = useState(item.quantity);
- 
   const updateQty$ = new Subject<number>();
   const addQtyClick = () => {
     setQuantity(quantity + 1)
@@ -44,7 +44,7 @@ const ShoppingItem: React.SFC<ShoppingItemProps> = ({item, onQuantityUpdate}) =>
         <p className="item-name">{item.name}</p>
       </div>
       <div className="shopping-list-item__actions">
-        <img src={trash} alt="delete" className="" loading="lazy"/>
+        <img src={trash} alt="delete" className="" onClick={() => onDeleteItem(item._id)} loading="lazy"/>
         <p className="quantity">{quantity} {item.unitMeasure}</p>
         <img src={minus} alt="reduce" id="shopping-list-item__reduceBtn" loading="lazy" onClick={reduceQtyClick}/>
         <img src={plus} alt="add" id="shopping-list-item__addBtn" loading="lazy" onClick={addQtyClick}/>
